@@ -7,6 +7,8 @@ defmodule QRCode.Mixfile do
      elixir: "~> 1.4",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
+     compilers: [:rustler] ++ Mix.compilers,
+     rustler_crates: rustler_crates(),
      deps: deps()]
   end
 
@@ -28,6 +30,15 @@ defmodule QRCode.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    []
+    [
+      {:rustler, "~> 0.9.0"}
+    ]
+  end
+
+  defp rustler_crates do
+    [qrcode_ex: [
+      path: "native/qrcode_ex",
+      mode: (if Mix.env == :prod, do: :release, else: :debug),
+    ]]
   end
 end
