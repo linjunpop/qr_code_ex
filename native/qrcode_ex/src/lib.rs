@@ -20,7 +20,11 @@ mod atoms {
 
 rustler_export_nifs! {
     "Elixir.QRCode",
-    [("add", 2, add)],
+    [
+        ("add", 2, add),
+        ("generate_svg", 1, generate_svg),
+        ("generate_string", 1, generate_string)
+    ],
     None
 }
 
@@ -31,14 +35,26 @@ fn add<'a>(env: NifEnv<'a>, args: &[NifTerm<'a>]) -> NifResult<NifTerm<'a>> {
     Ok((atoms::ok(), num1 + num2).encode(env))
 }
 
-// fn generate_svg<'a>(env: NifEnv<'a>, args: &[NifTerm<'a>]) -> NifResult<NifTerm<'a>> {
-// fn generate_svg() {
-//     let code = QrCode::with_version(b"01234567", Version::Micro(2), EcLevel::L).unwrap();
-//     let image = code.render()
-//         .min_dimensions(200, 200)
-//         .dark_color(svg::Color("#800000"))
-//         .light_color(svg::Color("#ffff80"))
-//         .build();
+fn generate_svg<'a>(env: NifEnv<'a>, args: &[NifTerm<'a>]) -> NifResult<NifTerm<'a>> {
+    let data: &str = try!(args[0].decode());
 
-//     OK((atoms::ok(), ).encode(env))
-// }
+    let code = QrCode::new(data.as_bytes()).unwrap();
+
+    let image = code.render()
+        .min_dimensions(200, 200)
+        .dark_color(svg::Color("#000000"))
+        .light_color(svg::Color("#ffffff"))
+        .build();
+
+    Ok((atoms::ok(), image).encode(env))
+}
+
+fn generate_string<'a>(env: NifEnv<'a>, args: &[NifTerm<'a>]) -> NifResult<NifTerm<'a>> {
+    let data: &str = try!(args[0].decode());
+
+    let code = QrCode::new(data.as_bytes()).unwrap();
+    let string = code.render::<char>()
+        .build();
+
+    Ok((atoms::ok(), string).encode(env))
+}
