@@ -1,6 +1,6 @@
 # QRCode
 
-**TODO: Add description**
+QR Code encoder in Rust.
 
 ## Installation
 
@@ -16,4 +16,16 @@ end
 Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
 and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
 be found at [https://hexdocs.pm/qr_code](https://hexdocs.pm/qr_code).
+
+## Usage
+
+```elixir
+iex> QRCode.generate_string("12345")
+...> {:ok, string}
+```
+
+```elixir
+iex> QRCode.generate_svg("12345")
+...> {:ok, svg_string}
+```
 
