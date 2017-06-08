@@ -1,12 +1,27 @@
 defmodule QRCode do
   @moduledoc """
-  Documentation for QRCode.
+  QRCode encoder
   """
 
   use Rustler, otp_app: :qr_code, crate: :qr_code
 
-  # When loading a NIF module, dummy clauses for all NIF function are required.
-  # NIF dummies usually just error out when called when the NIF is not loaded, as that should never normally happen.
-  def generate_svg(_arg1), do: exit(:nif_not_loaded)
-  def generate_string(_arg1), do: exit(:nif_not_loaded)
+  @doc """
+  Generate SVG QRCode
+
+  ## Example
+      iex> QRCode.generate_svg("12345")
+      ...> {:ok, "<svg>...</svg>"
+  """
+  @spec generate_svg(String.t) :: {:ok, String.t}
+  def generate_svg(_data), do: exit(:nif_not_loaded)
+
+  @doc """
+  Generate String QRCode
+
+  ## Example
+      iex> QRCode.generate_svg("12345")
+      ...> {:ok, "###\\n # \\n## \\n"
+  """
+  @spec generate_string(String.t) :: {:ok, String.t}
+  def generate_string(_data), do: exit(:nif_not_loaded)
 end
