@@ -14,7 +14,7 @@ defmodule QRCode do
 
     @on_load :load_nif
     def load_nif do
-        Rustler.load_nif("qrcode_ex")
+        Rustler.load_nif("qr_code")
     end
 
     # When your NIF is loaded, it will override this function.

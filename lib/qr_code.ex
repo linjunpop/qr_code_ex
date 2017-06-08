@@ -3,7 +3,7 @@ defmodule QRCode do
   Documentation for QRCode.
   """
 
-  use Rustler, otp_app: :qr_code, crate: :qrcode_ex
+  use Rustler, otp_app: :qr_code, crate: :qr_code
 
   # When loading a NIF module, dummy clauses for all NIF function are required.
   # NIF dummies usually just error out when called when the NIF is not loaded, as that should never normally happen.

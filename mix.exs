@@ -36,8 +36,8 @@ defmodule QRCode.Mixfile do
   end
 
   defp rustler_crates do
-    [qrcode_ex: [
-      path: "native/qrcode_ex",
+    [qr_code: [
+      path: "native/qr_code",
       mode: (if Mix.env == :prod, do: :release, else: :debug),
     ]]
   end

@@ -1,10 +1,10 @@
 [package]
-name = "qrcode_ex"
+name = "qr_code"
 version = "0.1.0"
 authors = []
 
 [lib]
-name = "qrcode_ex"
+name = "qr_code"
 path = "src/lib.rs"
 crate-type = ["dylib"]
 
