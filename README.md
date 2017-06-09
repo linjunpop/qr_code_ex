@@ -21,11 +21,11 @@ be found at [https://hexdocs.pm/qr_code](https://hexdocs.pm/qr_code).
 
 ```elixir
 iex> QRCode.generate_string("12345")
-...> {:ok, string}
+...> {:ok, "###\\n # \\n## \\n"}
 ```
 
 ```elixir
 iex> QRCode.generate_svg("12345")
-...> {:ok, svg_string}
+...> {:ok, "<svg>...</svg>"}
 ```
 

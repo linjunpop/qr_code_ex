@@ -10,7 +10,7 @@ defmodule QRCode do
 
   ## Example
       iex> QRCode.generate_svg("12345")
-      ...> {:ok, "<svg>...</svg>"
+      ...> {:ok, "<svg>...</svg>"}
   """
   @spec generate_svg(String.t) :: {:ok, String.t}
   def generate_svg(_data), do: exit(:nif_not_loaded)
@@ -20,7 +20,7 @@ defmodule QRCode do
 
   ## Example
       iex> QRCode.generate_svg("12345")
-      ...> {:ok, "###\\n # \\n## \\n"
+      ...> {:ok, "###\\n # \\n## \\n"}
   """
   @spec generate_string(String.t) :: {:ok, String.t}
   def generate_string(_data), do: exit(:nif_not_loaded)
