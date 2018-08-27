@@ -31,7 +31,7 @@ defmodule QRCode.Mixfile do
   # Type "mix help deps" for more examples and options
   defp deps do
     [
-      {:rustler, "~> 0.9.0"},
+      {:rustler, "~> 0.18"},
 
       {:ex_doc, "~> 0.14", only: :dev, runtime: false},
       {:dialyxir, "~> 0.5", only: [:dev], runtime: false}

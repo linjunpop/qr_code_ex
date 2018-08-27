@@ -20,3 +20,7 @@ erl_crash.dump
 *.ez
 
 priv/native/*.so
+
+
+.elixir_ls
+.vscode
